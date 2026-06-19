@@ -227,10 +227,12 @@ const handleDownload = async (id, fileName) => {
                         Vectorized
                       </>
                     ) : doc.status === "failed" ? (
-                      <>
-                        <AlertCircle className="w-3 h-3" />
-                        Failed
-                      </>
+                      <span 
+                        className="flex items-center gap-1 cursor-help"
+                        title={doc.errorMessage || "Processing failed"}
+                      >
+                        <AlertCircle size={14} /> Failed
+                      </span>
                     ) : (
                       <>
                         <Clock className="w-3 h-3" />

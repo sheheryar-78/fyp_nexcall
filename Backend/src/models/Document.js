@@ -11,6 +11,7 @@ const documentSchema = new mongoose.Schema(
       enum: ["processing", "vectorized", "failed"],
       default: "processing",
     },
+    errorMessage: String,
   },
   { timestamps: true }
 );

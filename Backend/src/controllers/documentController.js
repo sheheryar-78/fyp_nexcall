@@ -228,6 +228,7 @@ export const uploadDocument = async (req, res) => {
       } catch (err) {
         console.log("RAG Error:", err);
         saved.status = "failed";
+        saved.errorMessage = err.message || String(err);
         await saved.save();
       }
     }, 1000); // delay so response fast aaye
