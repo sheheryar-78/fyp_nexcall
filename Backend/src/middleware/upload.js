@@ -1,10 +1,16 @@
 import multer from "multer";
 import path from "path";
 
+import fs from "fs";
+
 // Storage config
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/"); // folder auto create kar lena
+    const dir = "uploads/";
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    cb(null, dir);
   },
   filename: (req, file, cb) => {
     const uniqueName = Date.now() + "-" + file.originalname;
