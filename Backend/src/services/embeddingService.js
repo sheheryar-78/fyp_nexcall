@@ -10,12 +10,16 @@ export const createEmbedding = async (text) => {
 
   // 🔹 Dynamically find the supported embedding model
   if (!dynamicModelName) {
-    console.log("Checking supported models for your API key...");
+    const maskedKey = apiKey.length > 10 
+      ? `${apiKey.substring(0, 6)}...${apiKey.substring(apiKey.length - 4)}` 
+      : "invalid-short-key";
+    console.log(`Checking supported models for API key: ${maskedKey} (length: ${apiKey.length})`);
+    
     const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`);
     const data = await res.json();
     
     if (data.error) {
-      throw new Error(`API Error: ${data.error.message}`);
+      throw new Error(`API Error (with key ${maskedKey}): ${data.error.message}`);
     }
 
     const embeddingModel = data.models.find(m => 
