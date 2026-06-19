@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist/
+build/
+
+# Temporary files
+*.wav
+*.tmp
+temp_audio_*
+
+# Debug/log files
+*.log
+npm-debug.log*
+twilio_debug.txt
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Uploads (user-generated content)
+uploads/
+
+# Generated audio files
+Backend/public/audio/
